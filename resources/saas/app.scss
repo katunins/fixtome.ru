@@ -373,3 +373,18 @@ body {
         margin-top: 20px;
     }
 }
+
+.video {
+    width: 450px;
+    height: 450;
+    overflow: hidden;
+    border: 7px solid var(--lightGrey);
+    margin: 40px auto;
+    border-radius: 10px;
+
+    video {
+        width: 100%;
+        position: relative;
+        top: -47px;
+    }
+}

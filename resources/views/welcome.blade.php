@@ -27,16 +27,20 @@ fixtome - мобильные исследования
             <button class="how-it-works" onclick="howItWorks()">Как это работает?</button>
         </div>
     </div>
-    <div class="video">
-        <video controls width="400" height="300" muted>
-            {{-- <source src="video.mp4" type="video/mp4"><!-- MP4 для Safari, IE9, iPhone, iPad, Android, и Windows Phone 7 --> --}}
-            <source src="viseo/howitworks.webm" type="video/webm"><!-- WebM/VP8 для Firefox4, Opera, и Chrome -->
-            {{-- <source src="video.ogv" type="video/ogg"><!-- Ogg/Vorbis для старых версий браузеров Firefox и Opera --> --}}
-            {{-- <object data="video.swf" type="application/x-shockwave-flash"><!-- добавляем видеоконтент для устаревших браузеров, в которых нет поддержки элемента video --> --}}
-            {{-- <param name="movie" value="video.swf"> --}}
-            </object>
-        </video>
+    <div class="video hide" id="video">
     </div>
 
 </div>
 @endsection
+<script>
+
+    function howItWorks(){
+        let videoElem = document.getElementById('video')
+        videoElem.innerHTML = '<video loop muted id="background"><source src="video/howitwork.mp4" type="video/mp4"><source src="video/howitwork.webm" type="video/webm"><source src="video/howitwork.ogv" type="video/ogg"></video>'
+        videoElem.className="video"
+        window.scrollTo({top: 40000, behavior: 'smooth'})
+        setTimeout(function(){
+            document.querySelector('video').play()
+        }, 1000)
+    }
+</script>
