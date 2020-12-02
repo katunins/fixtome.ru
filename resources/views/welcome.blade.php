@@ -36,7 +36,7 @@ fixtome - мобильные исследования
 
     function howItWorks(){
         let videoElem = document.getElementById('video')
-        videoElem.innerHTML = '<video loop muted id="background"><source src="video/howitwork.mp4" type="video/mp4"><source src="video/howitwork.webm" type="video/webm"><source src="video/howitwork.ogv" type="video/ogg"></video>'
+        videoElem.innerHTML = '<video loop muted playsinline id="background"><source src="video/howitwork.mp4" type="video/mp4"><source src="video/howitwork.webm" type="video/webm"><source src="video/howitwork.ogv" type="video/ogg"></video>'
         videoElem.className="video"
         window.scrollTo({top: 40000, behavior: 'smooth'})
         setTimeout(function(){
