@@ -94,6 +94,14 @@ body {
   font-size: 14px;
 }
 
+.button-block .how-it-works {
+  outline: none;
+  border: none;
+  background: transparent;
+  color: var(--grey);
+  cursor: pointer;
+}
+
 .button-block a {
   display: block;
   color: var(--grey);
