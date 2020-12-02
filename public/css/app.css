@@ -145,6 +145,9 @@ body {
 }
 
 .form input {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
   width: var(--inputWidth);
   display: block;
   margin: 6px auto;
@@ -405,8 +408,8 @@ body {
 }
 
 .video {
-  width: 450px;
-  height: 450;
+  width: 350px;
+  height: 350;
   overflow: hidden;
   border: 7px solid var(--lightGrey);
   margin: 40px auto;

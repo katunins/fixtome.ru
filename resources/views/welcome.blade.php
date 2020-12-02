@@ -41,6 +41,6 @@ fixtome - мобильные исследования
         window.scrollTo({top: 40000, behavior: 'smooth'})
         setTimeout(function(){
             document.querySelector('video').play()
-        }, 1000)
+        }, 400)
     }
 </script>
