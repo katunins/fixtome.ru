@@ -124,10 +124,11 @@
         let likeBlocks = document.querySelectorAll('.like-text-block')
         if (likeBlocks.length > 0){
             likeBlocks.forEach(el=>{
+                
                 let likeBlock = el.parentNode
                 let text=''
                 text+=el.querySelector('h3').innerHTML
-                text+=el.querySelector('p').innerHTML
+                if (el.querySelector('p')) text+=el.querySelector('p').innerHTML;
                 if (value=='') {
                     if (likeBlock.classList.contains('hide'))likeBlock.classList.remove('hide')
                 } else {
