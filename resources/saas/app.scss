@@ -1,0 +1,337 @@
+:root {
+    font-family: 'Roboto', sans-serif;
+    --grey: #616161;
+    --lightGrey: #efefef;
+    --inputWidth: calc(100% - 40px);
+}
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+    overflow: hidden;
+    text-align: center;
+}
+
+.hide {
+    display: none !important;
+}
+
+.hide-effect-off {
+    transition: 0.5s ease-in-out;
+    display: none;
+    opacity: 0 !important;
+    height: 0px !important;
+    margin: 0 !important;
+}
+
+.hide-effect-on {
+    transition: 0.7s ease-in-out;
+    // height: px !important;
+    opacity: 1 !important;
+}
+
+.background-eyes {
+    width: 100%;
+    // background-color: #535353;
+    position: relative;
+    left: 0px;
+    top: 25px;
+    div {
+        position: absolute;
+    }
+    div>img {
+        // height: 100%;
+        width: 232px;
+        height: auto;
+    }
+    .background-eye-left {
+        left: -116px;
+    }
+    .background-eye-right {
+        right: -116px;
+    }
+}
+
+.main-block {
+    display: flex;
+    flex-direction: column;
+    // height: 100%;
+    justify-content: space-between;
+}
+
+.main-block-welcome {
+    min-height: 300px;
+    margin-top: calc(50vh - 285px/2 + 50px);
+}
+
+.main-block-newsearch {
+    min-height: 300px;
+    margin-top: calc(50vh - 300px/2 + 30px);
+}
+
+.main-block-neworder {
+    min-height: 300px;
+    margin-top: calc(50vh - 300px/2 + 30px);
+}
+
+.logo {
+    img {
+        width: 126px;
+    }
+}
+
+.utp {
+    width: 235px;
+    margin: 0 auto;
+    p {
+        font-weight: 300;
+        font-size: 14px;
+    }
+}
+
+.button-block {
+    a {
+        display: block;
+        color: var(--grey);
+        text-decoration: none;
+        font-size: 14px;
+    }
+    a:not(.button) {
+        color: var(--lightGrey);
+    }
+    .button {
+        border: none;
+        display: flex;
+        margin: 0 auto;
+        justify-content: center;
+        align-items: center;
+        width: 187px;
+        height: 40px;
+        background: linear-gradient(97.61deg, rgba(165, 255, 250, 0.67) 16.7%, rgba(255, 255, 255, 0) 103.34%), rgba(148, 236, 255, 0.56);
+        box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.17);
+        border-radius: 30px;
+        margin-bottom: 5px;
+    }
+    .new-research-button {
+        margin-bottom: 8px;
+    }
+}
+
+.button-block-research {
+    margin: 20px auto 30px;
+}
+
+.form {
+    text-align: center;
+    width: 100%;
+    margin: 0 auto;
+    max-width: 400px;
+    input {
+        width: var(--inputWidth);
+        display: block;
+        margin: 6px auto;
+        text-align: center;
+        height: 40px;
+        border-radius: 5px;
+        outline: none;
+        font-size: 16px;
+        color: var(--grey);
+    }
+    .title {
+        background-color: var(--lightGrey);
+        display: inline-block;
+        position: relative;
+        right: -10px;
+    }
+    .erase-input {
+        display: inline-block;
+        width: 17px;
+        height: 17px;
+        border-radius: 10px;
+        border: 1px solid var(--grey);
+        background-color: transparent;
+        background-image: url(/images/erase.svg);
+        background-position: center;
+        background-size: 7px;
+        background-repeat: no-repeat;
+        position: relative;
+        left: -20px;
+        outline: none;
+        cursor: pointer;
+    }
+    .description {
+        height: 60px;
+    }
+    input::placeholder {
+        color: var(--grey);
+    }
+    input:not([type="file"]) {
+        border: 1px solid var(--lightGrey);
+        margin: 2px auto;
+    }
+    .input-file {
+        width: 150px;
+        margin: 30px auto;
+        cursor: pointer;
+        p {
+            margin-top: 5px;
+            color: var(--grey);
+            font-size: 12px;
+            margin: 0;
+        }
+    }
+    .half-opacity {
+        opacity: 0.4;
+    }
+    .input-error {
+        color: red;
+        font-size: 14px;
+    }
+    .loaded-image {
+        width: 60px;
+        height: 60px;
+        border-radius: 50px;
+        border: 1px solid var(--lightGrey);
+        margin: 0 auto;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        cursor: pointer;
+        position: relative;
+    }
+    .input-block {
+        // margin: 30px auto;
+        margin: 40px auto 30px;
+    }
+    .input-block-research {
+        margin: 10px auto 0;
+    }
+}
+
+.load-image p {
+    // width: 100px;
+    font-size: 12px;
+    color: var(--grey);
+    // margin: 10px auto 20px;
+    position: relative;
+    top: 48px;
+}
+
+.share-button {
+    display: inline-block;
+    width: 35px;
+    height: 35px;
+    border: navajowhite;
+    border-radius: 5px;
+    cursor: pointer;
+    img {
+        width: 75%;
+    }
+}
+
+#sharelink {
+    // width: 0px;
+    display: block;
+    height: 0px;
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+.linktobufer {
+    padding: 0px;
+    height: 0px;
+    font-size: 0 !important;
+}
+
+.order-title-block {
+    margin-top: 10px;
+    h2 {
+        font-size: 20px;
+        font-weight: normal;
+        margin: 0;
+    }
+    p {
+        margin: 0;
+        color: var(--grey);
+    }
+}
+
+.like-block {
+    display: flex;
+    width: var(--inputWidth);
+    max-width: 400px;
+    // margin: 0px auto 20px;
+    margin: 0 auto 8px;
+    button.like {
+        width: 40px;
+        height: 40px;
+        font-size: 12px;
+        line-height: 0;
+        padding: 0!important;
+        outline: none;
+        cursor: pointer;
+        border: none;
+        background: none;
+        background-image: url(/images/like.svg);
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-position: center;
+        filter: drop-shadow(1px 2px 2px rgba(221, 221, 221, 0.445));
+        span {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            left: -1px;
+            top: -2px;
+        }
+    }
+    button.empty-like {
+        background-image: url(/images/empty-like.svg);
+    }
+    button.like:active {
+        opacity: 0.3;
+    }
+    .like-text-block {
+        text-align: left;
+        margin-left: 10px;
+        width: var(--inputWidth);
+        border-radius: 5px;
+        padding: 9px 15px 5px;
+        background-color: aliceblue;
+        h3 {
+            font-weight: normal;
+            font-size: 15px;
+            margin: 0;
+            // line-height: 0.95;
+        }
+        p {
+            color: var(--grey);
+            margin: 0;
+            margin-top: 5px;
+            font-weight: normal;
+            font-size: 12px;
+        }
+    }
+    .like-text-block::after {
+        content: "";
+        padding: 4px 10px;
+        background-color: aliceblue;
+        position: relative;
+        left: -20px;
+        top: 5px;
+        display: inline-block;
+        border-top-left-radius: 31px;
+    }
+}
+
+.likes-list {
+    margin-top: 10px;
+}
