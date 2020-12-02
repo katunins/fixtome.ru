@@ -19,12 +19,12 @@ fixtome - мобильные исследования
         </div>
         <div class="utp">
             <p>
-                Сервис исследования групп с рейтингом мнений
+                Online опрос ваших пользователей с сортировкой и голосованием
             </p>
         </div>
         <div class="button-block">
             <a class="button new-research-button" href="newResearch">Создать опрос</a>
-            <a href="about">Как это работает?</a>
+            {{-- <a href="about">Как это работает?</a> --}}
         </div>
     </div>
 

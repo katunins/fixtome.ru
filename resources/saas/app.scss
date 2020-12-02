@@ -103,12 +103,14 @@ body {
         font-size: 14px;
     }
     a:not(.button) {
-        color: var(--lightGrey);
+        color: var(--grey);
     }
     .button {
         border: none;
         display: flex;
         margin: 0 auto;
+        color: var(--grey);
+        font-size: 14px;
         justify-content: center;
         align-items: center;
         width: 187px;
@@ -169,7 +171,8 @@ body {
         height: 60px;
     }
     input::placeholder {
-        color: var(--grey);
+        // color: var(--grey);
+        font-size: 14px;
     }
     input:not([type="file"]) {
         border: 1px solid var(--lightGrey);
@@ -334,4 +337,32 @@ body {
 
 .likes-list {
     margin-top: 10px;
+}
+
+.info-block {
+    width: 300px;
+    margin: 20px auto 60px;
+    .portrait-image {
+        opacity: 0.8;
+        width: 300px;
+        height: 200px;
+        background-image: url(/images/portrait.jpg);
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        margin: 30px auto;
+    }
+    h3 {
+        font-weight: normal;
+        font-size: 16px;
+        margin: 0;
+    }
+    p {
+        margin: 5px;
+        font-size: 14px;
+        color: var(--grey);
+    }
+    .whatsapp {
+        margin-top: 20px;
+    }
 }

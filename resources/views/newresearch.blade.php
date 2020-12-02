@@ -31,11 +31,12 @@
                 @error('title')
                 <div class="input-error">{{ $message }}</div>
                 @enderror
-                <input class="title" type="text" name="title" id="" placeholder="Заголовок" autocomplete="off"
+                <input class="title" type="text" name="title" id="" placeholder="Напишите ваш вопрос" autocomplete="off"
                     value="{{ old('title') }}">
                 <button type="button" class="erase-input" onclick="eraseInput()"></button>
-                <input class="description" type="text" name="description" id="" placeholder="Краткое описание"
-                    autocomplete="off" value="{{ old('description') }}">
+                <input class="description" type="text" name="description" id=""
+                    placeholder="Добавьте краткое описание (не обязательно)" autocomplete="off"
+                    value="{{ old('description') }}">
 
                 @error('count')
                 <div class="input-error">{{ $message }}</div>
