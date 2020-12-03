@@ -20,71 +20,72 @@ class SearchController extends Controller
             'image.image' => 'Файл не является изображением',
         ];
         if ($request->image) {
-            $rules['image']='mimes:jpeg,png,jpg';
+            $rules['image'] = 'mimes:jpeg,png,jpg';
         }
         $request->validate($rules, $messages);
         // проверим есть ли уже такие записи
-        $token =$request->_token.Str::random(2);
-        $dublicates = DB::table('order')->where(['token'=>$token])->get();
-        if ($dublicates->count() >10) {
+        $token = $request->_token . Str::random(2);
+        $dublicates = DB::table('order')->where(['token' => $token])->get();
+        if ($dublicates->count() > 10) {
             return redirect()->back()
-            ->withErrors([
-                'count'=>'У вас уже есть созданные опросы. Повторите попытку на следующий день или оплатите подписку'
+                ->withErrors([
+                    'count' => 'У вас уже есть созданные опросы. Повторите попытку на следующий день или оплатите подписку'
                 ]);
         };
 
         if ($request->image) {
-        $file = $request->image;
-        Image::make($file)
-            ->orientate()
-            ->resize(400, null, function ($constraint) {
-                $constraint->aspectRatio();
-            })
-            ->sharpen(5)->save();
+            $file = $request->image;
+            Image::make($file)
+                ->orientate()
+                ->resize(400, null, function ($constraint) {
+                    $constraint->aspectRatio();
+                })
+                ->sharpen(5)->save();
             $filename = $token;
-            $path = $file->storeAs('public', 'uploads/'.$filename.'.'.$request->image->extension());
+            $path = $file->storeAs('public', 'uploads/' . $filename . '.' . $request->image->extension());
             $path = str_replace('public/', '/storage/', $path);
         } else {
             $path = null;
         }
-        
+
         DB::table('order')->insert([
-            'image'=>$path,
-            'title'=>$request->title,
-            'description'=>$request->description,
-            'token'=>$token,
+            'image' => $path,
+            'title' => $request->title,
+            'description' => $request->description,
+            'token' => $token,
         ]);
 
         return View('neworder')->with('data', [
-            'title'=>$request->title,
-            'token'=>$token,
+            'title' => $request->title,
+            'token' => $token,
         ]);
     }
 
-    static function getResearch($token) {
-        $dataArr = DB::table('order')->where('token',$token)->first();
-        $likesArr = DB::table('likes')->where('orderToken',$token)->get()->sortByDesc('likes');
-        
+    static function getResearch($token)
+    {
+        $dataArr = DB::table('order')->where('token', $token)->first();
+        $likesArr = DB::table('likes')->where('orderToken', $token)->get()->sortByDesc('likes');
+
         return View('research', compact('dataArr', 'likesArr'));
     }
 
     public function setLike(Request $request)
     {
         $like = DB::table('likes')->where('id', $request->id)->first();
-        // $token = Session::get('_token');
         $likeUserlist = json_decode($like->likeUserlist);
-        if ($likeUserlist == ''){ 
+        // dd (array_search($request->_token, $likeUserlist));
+        if ($likeUserlist == '') {
             $likeUserlist = [];
-        } elseif (array_search($request->_token, $likeUserlist) !=false) {
-            return response()->json(false);    
+        } elseif (array_search($request->_token, $likeUserlist) == 0) {
+            return response()->json(false);
         }
         $likeUserlist[] = $request->_token;
         DB::table('likes')->where('id', $request->id)
-        ->update([
-            'likeUserlist'=>$likeUserlist,
-            'likes' => $like->likes+1
+            ->update([
+                'likeUserlist' => $likeUserlist,
+                'likes' => $like->likes + 1
             ]);
-        return response()->json($like->likes+1);
+        return response()->json($like->likes + 1);
     }
 
     public function newTweet(Request $request)
@@ -93,11 +94,49 @@ class SearchController extends Controller
         // нет ли похожего твита
         // ...
         DB::table('likes')->insert([
-            'orderToken'=>$request->orderToken,
-            'userToken'=>$request->_token,
-            'tweet'=>$request->title,
-            'description'=>$request->description,
+            'orderToken' => $request->orderToken,
+            'userToken' => $request->_token,
+            'tweet' => $request->title,
+            'description' => $request->description,
         ]);
         return redirect()->back();
+    }
+
+    static function getAllResearch()
+    {
+        // token": "Zhm55cXLlWp7Pdo1KaW18l4dMj2LZScPJfaTdMbzek"
+        // +"title": "ауц"
+        // +"description": null
+        // +"image": null
+        $dataArr = [];
+        foreach (DB::table('order')->get() as $item) {
+            $dataArr[$item->token] = [
+                'title' => $item->title,
+                'description' => $item->description,
+                'image' => $item->image
+            ];
+        }
+        // orderToken": "Zhm55cXLlWp7Pdo1KaW18l4dMj2LZScPJfaTdMbzek"
+        // +"userToken": "Zhm55cXLlWp7Pdo1KaW18l4dMj2LZScPJfaTdMbz"
+        // +"likeUserlist": null
+        // +"tweet": "цуа"
+        // +"description": null
+        // +"likes": 0
+        foreach (DB::table('likes')->get() as $item) {
+            $dataArr[$item->orderToken]['likes'][$item->userToken] = [
+                'tweet' => $item->tweet,
+                'description' => $item->description,
+                'likes' => $item->likes
+            ];
+        }
+
+        // foreach (DB::table('order')->get() as $item) {
+        //     $dataArr[$item['token'] = [
+        //         'title'
+        //     ]];
+        // }
+        // $likesArr = DB::table('likes')->where('orderToken',$token)->get()->sortByDesc('likes');   
+
+        return $dataArr;
     }
 }

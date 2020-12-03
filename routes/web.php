@@ -34,3 +34,7 @@ Route::get('/research/{token}', function ($token) {
 
 Route::post('/setLike', [SearchController::class, 'setLike']);
 Route::post('/research/newTweet', [SearchController::class, 'newTweet']);
+
+Route::get('/admin', function (){
+    return view('admin')->with('dataArr', SearchController::getAllResearch());
+});

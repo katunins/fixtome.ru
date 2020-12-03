@@ -47,7 +47,7 @@
                 @enderror
                 <input class="title" type="text" name="title" id="" placeholder="Ваше мнение" autocomplete="off"
                     value="{{ old('title') }}" oninput="titleInputEvent()">
-                <button type="button" class="erase-input hide-effect-off" onclick="eraseInput()"></button>
+                {{-- <button type="button" class="erase-input hide-effect-off" onclick="eraseInput()"></button> --}}
                 <input class="description hide-effect-off" type="text" name="description" id=""
                     placeholder="Добавьте подробности" autocomplete="off" value="{{ old('description') }}">
 
@@ -95,7 +95,7 @@
             [
                 document.querySelector('.description'), 
                 document.querySelector('.button-block'),
-                document.querySelector('.erase-input')
+                // document.querySelector('.erase-input')
             ].forEach(el=>{
                 if (status) {
                     if (el.classList.contains('hide-effect-off')) {
@@ -173,7 +173,6 @@
     function setLike(id) {
         let likeElem = event.target
         ajax('/setLike', {id:id}, function (result){
-            console.log (result)
             if (result) {
                 
                 if (result == 1) likeElem.className = 'like';
