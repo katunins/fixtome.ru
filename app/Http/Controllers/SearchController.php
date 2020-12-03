@@ -36,9 +36,9 @@ class SearchController extends Controller
         if ($request->image) {
         $file = $request->image;
         Image::make($file)
-            ->resize(400, 400, function ($constraint) {
+            ->orientate()
+            ->resize(400, null, function ($constraint) {
                 $constraint->aspectRatio();
-                $constraint->upsize();
             })
             ->sharpen(5)->save();
             $filename = $token;
