@@ -18,7 +18,7 @@
             @error('image')
             <div class="input-error">{{ $message }}</div>
             @enderror
-            <input class="hide" type="file" name="image" id="inputFile" onChange="fileSelected()">
+            <input class="hide" type="file" name="image" id="inputFile" onChange="fileSelected()" accept="image/*">
             <label class="load-image" for="inputFile">
                 <div class="loaded-image"
                     style="background-image: url(images/imageicon.svg);background-size: 30px;     background-position-y: 18px;">
@@ -31,11 +31,14 @@
                 @error('title')
                 <div class="input-error">{{ $message }}</div>
                 @enderror
+                <div class="erase-button-block">
+                    <button type="button" class="erase-input" onclick="eraseInput()"></button>
+                </div>
                 <input class="title" type="text" name="title" id="" placeholder="Напишите ваш вопрос" autocomplete="off"
                     value="{{ old('title') }}">
-                <button type="button" class="erase-input" onclick="eraseInput()"></button>
+                
                 <input class="description" type="text" name="description" id=""
-                    placeholder="Добавьте краткое описание (не обязательно)" autocomplete="off"
+                    placeholder="Добавьте описание" autocomplete="off"
                     value="{{ old('description') }}">
 
                 @error('count')
@@ -44,6 +47,7 @@
             </div>
             <div class="button-block">
                 <input class="button" type="submit" value="Сохранить">
+                {{-- <button type="button" class="how-it-works" onclick="howItWorks(true)">В начало</button> --}}
             </div>
         </form>
     </div>

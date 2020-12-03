@@ -16,6 +16,9 @@ body {
     margin: 0 auto;
     overflow: hidden;
     text-align: center;
+    // transition: 1s;
+    // opacity: 1;
+    // z-index: 1;
 }
 
 .hide {
@@ -28,6 +31,10 @@ body {
     opacity: 0 !important;
     height: 0px !important;
     margin: 0 !important;
+}
+
+.hide-opacity {
+    opacity: 0;
 }
 
 .hide-effect-on {
@@ -67,22 +74,22 @@ body {
 
 .main-block-welcome {
     min-height: 400px;
-    margin-top: calc(50vh - 285px/2 - 50px);
+    margin-top: calc(50vh - 320px/2 - 50px);
 }
 
 .main-block-newsearch {
     min-height: 300px;
-    margin-top: calc(50vh - 300px/2 + 30px);
+    margin-top: calc(50vh - 360px/2 + 30px);
 }
 
 .main-block-neworder {
     min-height: 300px;
-    margin-top: calc(50vh - 300px/2 + 30px);
+    margin-top: calc(50vh - 550px/2 + 30px);
 }
 
 .logo {
     img {
-        width: 200px;
+        width: 160px;
     }
 }
 
@@ -93,6 +100,11 @@ body {
         // font-weight: 300;
         font-size: 18px;
     }
+}
+
+.new-order-text {
+    // font-size: 14px;
+    margin: 40px auto 10px;
 }
 
 .button-block {
@@ -114,7 +126,7 @@ body {
         color: var(--grey);
     }
     .button {
-        border: none;
+        border: 1px solid #61616163;
         display: flex;
         margin: 0 auto;
         color: var(--grey);
@@ -131,6 +143,23 @@ body {
     }
     .new-research-button {
         margin-bottom: 15px;
+    }
+
+    .pulse-button {
+        animation: pulse-button 1s infinite;
+    }
+    @keyframes pulse-button {
+        0% {
+            box-shadow: 0 0 5px 0px rgba(0, 0, 0, 0.3);
+          }
+         
+        50% {
+        box-shadow: 0 0 5px 0px rgba(0, 0, 0, 0);
+        }
+        
+        100% {
+        box-shadow: 0 0 5px 0px rgba(0, 0, 0, 0.3);
+        }
     }
 }
 
@@ -156,38 +185,49 @@ body {
         outline: none;
         font-size: 16px;
         color: var(--grey);
+        box-shadow: 2px 3px 8px rgba(0, 0, 0, 0.1);
     }
     .title {
         background-color: var(--lightGrey);
         display: inline-block;
         position: relative;
-        right: -10px;
+        // right: -10px;
     }
-    .erase-input {
-        display: inline-block;
-        width: 17px;
-        height: 17px;
-        border-radius: 10px;
-        border: 1px solid var(--grey);
-        background-color: transparent;
-        background-image: url(/images/erase.svg);
-        background-position: center;
-        background-size: 7px;
-        background-repeat: no-repeat;
+    .erase-button-block {
+        text-align: right;
+        width: var(--inputWidth);
+        margin: 0 auto;
+        .erase-input {
+            
         position: relative;
-        left: -20px;
-        outline: none;
-        cursor: pointer;
+        top: 31px;
+        z-index: 1;
+        right: 7px;
+            width: 20px;
+            height: 20px;
+            border-radius: 10px;
+            border: 1px solid var(--grey);
+            background-color: transparent;
+            background-image: url(/images/erase.svg);
+            background-position: center;
+            background-size: 8px;
+            background-repeat: no-repeat;
+            // position: relative;
+            // left: -20px;
+            outline: none;
+            cursor: pointer;
+        }
     }
+    
     .description {
         height: 60px;
     }
     input::placeholder {
-        // color: var(--grey);
-        font-size: 14px;
+        color: #616161cc;
+        font-size: 16px;
     }
     input:not([type="file"]) {
-        border: 1px solid var(--lightGrey);
+        border: 1px solid #61616152;
         margin: 2px auto;
     }
     .input-file {
@@ -212,13 +252,14 @@ body {
         width: 60px;
         height: 60px;
         border-radius: 50px;
-        border: 1px solid var(--lightGrey);
+        border: 1px solid var(--grey);
         margin: 0 auto;
         background-repeat: no-repeat;
         background-size: cover;
         background-position: center;
         cursor: pointer;
         position: relative;
+        bottom: 8px;
     }
     .input-block {
         // margin: 30px auto;
@@ -230,30 +271,32 @@ body {
 }
 
 .load-image p {
-    // width: 100px;
-    font-size: 12px;
+    font-size: 13px;
     color: var(--grey);
-    // margin: 10px auto 20px;
     position: relative;
-    top: 48px;
+    /* top: 48px; */
+    bottom: -51px;
 }
 
 .share-button {
     display: inline-block;
-    width: 35px;
-    height: 35px;
-    border: navajowhite;
+    width: 50px;
+    height: 50px;
+    border: 1px solid var(--lightGrey);
     border-radius: 5px;
     cursor: pointer;
     img {
-        width: 75%;
+        width: 30px;
+        opacity: 0.7;
     }
 }
 
 #sharelink {
     // width: 0px;
     display: block;
-    height: 0px;
+    // visibility: hidden;
+    opacity: 0;
+    // height: 0px;
     margin: 0;
     padding: 0;
     border: 0;
@@ -370,7 +413,7 @@ body {
         margin: 0;
     }
     p {
-        margin: 5px;
+        margin: 10px auto;
         font-size: 14px;
         color: var(--grey);
     }
@@ -380,16 +423,54 @@ body {
 }
 
 .video {
-    width: 370px;
-    height: 370;
-    overflow: hidden;
-    border: 7px solid var(--lightGrey);
-    margin: 40px auto;
-    border-radius: 10px;
+    // width: 370px;
+    // height: 370;
+    // position: absolute;
+    // top: 0;
+    // left: 0;
+    // right: 0;
+    // height: 100vh;
+    width: 100%;
+    // max-height: 800px;
+    // overflow: hidden;
+    // border: 7px solid var(--lightGrey);
+    margin: 3px auto 40px;
+    max-width: 598px;
+    // z-index: 0;
+
+    .close-video-block {
+        width: 100%;
+        text-align: right;
+
+        button {
+            width: 24px;
+            height: 24px;
+            font-size: 17px;
+            line-height: 0;
+            text-align: center;
+            margin: 0;
+            padding: 3px;
+            border-radius: 18px;
+            border: 1px solid var(--grey);
+            color: 1px solid var(--grey);
+            position: relative;
+            top: 31px;
+            right: 10px;
+            z-index: 3;
+            outline: none;
+        }
+    }
 
     video {
         width: 100%;
-        position: relative;
-        top: -47px;
+        height: auto;
+        // position: relative;
+        // top: -47px;
+        // object-fit: none;
+        // object-position: top;
     }
+}
+
+.ya-share2 {
+    margin: 30px auto 40px;
 }

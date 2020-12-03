@@ -20,3 +20,10 @@
 </body>
 
 </html>
+<script>
+    document.addEventListener('DOMContentLoaded', function(){
+        document.querySelector('.logo').onclick = function(){
+            document.location = '/'
+        }
+    })
+</script>

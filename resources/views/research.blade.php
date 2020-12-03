@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('title')
-Опрос - {{ $dataArr->title }}
+Оставьте свое мнение о "{{ $dataArr->title }}"
 @endsection
 @section('content')
 <div class="container">
@@ -173,7 +173,9 @@
     function setLike(id) {
         let likeElem = event.target
         ajax('/setLike', {id:id}, function (result){
+            console.log (result)
             if (result) {
+                
                 if (result == 1) likeElem.className = 'like';
                 if (result>1) likeElem.querySelector('span').innerHTML = result;
             }
