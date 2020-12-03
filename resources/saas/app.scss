@@ -66,8 +66,8 @@ body {
 }
 
 .main-block-welcome {
-    min-height: 300px;
-    margin-top: calc(50vh - 285px/2 + 50px);
+    min-height: 400px;
+    margin-top: calc(50vh - 285px/2 - 50px);
 }
 
 .main-block-newsearch {
@@ -82,16 +82,16 @@ body {
 
 .logo {
     img {
-        width: 126px;
+        width: 200px;
     }
 }
 
 .utp {
-    width: 235px;
+    // width: 300px;
     margin: 0 auto;
     p {
-        font-weight: 300;
-        font-size: 14px;
+        // font-weight: 300;
+        font-size: 18px;
     }
 }
 
@@ -102,6 +102,7 @@ body {
         background: transparent;
         color: var(--grey);
         cursor: pointer;
+        font-size: 16px;
     }
     a {
         display: block;
@@ -117,18 +118,19 @@ body {
         display: flex;
         margin: 0 auto;
         color: var(--grey);
-        font-size: 14px;
+        font-size: 16px;
+        // font-weight: bold;
         justify-content: center;
         align-items: center;
-        width: 187px;
-        height: 40px;
+        width: 200px;
+        height: 45px;
         background: linear-gradient(97.61deg, rgba(165, 255, 250, 0.67) 16.7%, rgba(255, 255, 255, 0) 103.34%), rgba(148, 236, 255, 0.56);
         box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.17);
         border-radius: 30px;
         margin-bottom: 5px;
     }
     .new-research-button {
-        margin-bottom: 8px;
+        margin-bottom: 15px;
     }
 }
 
