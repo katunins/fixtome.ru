@@ -11,7 +11,8 @@ class SearchController extends Controller
 {
     public function newResearch(Request $request)
     {
-        dd($request->image);
+        
+        dd($_FILES);
         $rules = [
             'title' => 'required|max:255',
         ];
