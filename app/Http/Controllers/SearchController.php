@@ -11,6 +11,7 @@ class SearchController extends Controller
 {
     public function newResearch(Request $request)
     {
+        dd($request->image);
         $rules = [
             'title' => 'required|max:255',
         ];
@@ -18,9 +19,10 @@ class SearchController extends Controller
             'title.required' => 'Укажите заголовок',
             'image.mimes' => 'Картинка должна быть: jpg или png',
             'image.image' => 'Файл не является изображением',
+            'image.required' => 'Файлу не удалось загрузиться на сервер',
         ];
         if ($request->image) {
-            $rules['image'] = 'mimes:jpeg,png,jpg';
+            $rules['image'] = 'required|mimes:jpeg,png,jpg';
         }
         $request->validate($rules, $messages);
         // проверим есть ли уже такие записи
