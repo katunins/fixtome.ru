@@ -59,9 +59,42 @@
 
         var input = event.target
         if (input.files && input.files[0]) {
-            console.log (input.files[0].name)
-            input.files[0].name = 'ss.jpg'
-            console.log (input.files[0].name)
+            var newFile = new File([input.files[0]], "Bank - Document.docx", {
+                type: input.files[0].type,
+            });
+
+
+            var data = new FormData();
+            data.set("image", newFile);
+            data.set("title", 'newFile');
+            fetch("newResearch", {
+                    headers: {
+                        'Content-Type': 'multipart/form-data',
+                        // Accept: 'application/json, text-plain, */*',
+                        'X-Requested-With': 'XMLHttpRequest',
+                        'X-CSRF-TOKEN': document
+                            .querySelector('meta[name="csrf-token"]')
+                            .getAttribute('content'),
+                    },
+                    method: "POST",
+                    body: data
+                })
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error("HTTP error " + response.status);
+                    }
+                    return response.text(); // or response.json() or whatever
+                })
+                .then(response => {
+                    // Do something with the response
+                })
+                .catch(error => {
+                    // Do something with the error
+                });
+
+
+
+            console.log(newFile)
             if (input.files[0].size > 1024 * 1024 * 5) return
             var reader = new FileReader()
             reader.onload = function(e) {
