@@ -64,34 +64,6 @@
             });
 
 
-            var data = new FormData();
-            data.set("image", newFile);
-            data.set("title", 'newFile');
-            fetch("newResearch", {
-                    headers: {
-                        'Content-Type': 'multipart/form-data',
-                        // Accept: 'application/json, text-plain, */*',
-                        'X-Requested-With': 'XMLHttpRequest',
-                        'X-CSRF-TOKEN': document
-                            .querySelector('meta[name="csrf-token"]')
-                            .getAttribute('content'),
-                    },
-                    method: "POST",
-                    body: data
-                })
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error("HTTP error " + response.status);
-                    }
-                    return response.text(); // or response.json() or whatever
-                })
-                .then(response => {
-                    // Do something with the response
-                })
-                .catch(error => {
-                    // Do something with the error
-                });
-
 
 
             console.log(newFile)
