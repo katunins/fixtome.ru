@@ -59,13 +59,19 @@
 
         var input = event.target
         if (input.files && input.files[0]) {
-            console.log (input.files[0])
-            let filename = input.files[0].name
-            Object.defineProperty(input.files[0], 'name', {
-                writable: true,
-                value: filename.replace(/([^a-z0-9.]+)/gi, '-')
-            });
-            console.log (input.files[0])
+            
+            // console.log (input.files[0])
+            // let filename = input.files[0].name
+            // Object.defineProperty(input.files[0], 'name', {
+            //     writable: true,
+            //     value: filename.replace(/([^a-z0-9.]+)/gi, '-')
+            // });
+            // console.log (input.files[0])
+
+            // var blob = input.files[0].slice(0, input.files[0].size); 
+            // newFile = new File([blob], filename.replace(/([^a-z0-9.]+)/gi, '-'), {type: 'image/png'});
+
+            // console.log (newFile)
 
             if (input.files[0].size > 1024 * 1024 * 5) return
             var reader = new FileReader()
