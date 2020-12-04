@@ -12,7 +12,7 @@ class SearchController extends Controller
     public function newResearch(Request $request)
     {
         
-        // dd($_FILES);
+        dd($request->all());
         $rules = [
             'title' => 'required|max:255',
         ];
