@@ -72,12 +72,12 @@ class SearchController extends Controller
 
     public function setLike(Request $request)
     {
+        $request->_token = session()->get('_token');
         $like = DB::table('likes')->where('id', $request->id)->first();
         $likeUserlist = json_decode($like->likeUserlist);
-        // dd (array_search($request->_token, $likeUserlist));
         if ($likeUserlist == '') {
             $likeUserlist = [];
-        } elseif (array_search($request->_token, $likeUserlist) == 0) {
+        } elseif (array_search($request->_token, $likeUserlist) != 0) {
             return response()->json(false);
         }
         $likeUserlist[] = $request->_token;
