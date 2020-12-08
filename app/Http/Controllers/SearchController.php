@@ -70,6 +70,8 @@ class SearchController extends Controller
         return View('research', compact('dataArr', 'likesArr'));
     }
 
+    // @param
+    // id комментария
     public function setLike(Request $request)
     {
         $request->_token = session()->get('_token');
@@ -77,7 +79,7 @@ class SearchController extends Controller
         $likeUserlist = json_decode($like->likeUserlist);
         if ($likeUserlist == '') {
             $likeUserlist = [];
-        } elseif (array_search($request->_token, $likeUserlist) != 0) {
+        } elseif (array_search($request->_token, $likeUserlist) !== false) {
             return response()->json(false);
         }
         $likeUserlist[] = $request->_token;
