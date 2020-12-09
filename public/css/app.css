@@ -345,7 +345,7 @@ body {
 }
 
 .order-title-block p {
-  margin: 0;
+  margin: 14px 0px;
   color: var(--grey);
 }
 
