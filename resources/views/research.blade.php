@@ -45,7 +45,7 @@
                 @error('title')
                 <div class="input-error">{{ $message }}</div>
                 @enderror
-                <input class="title" type="text" name="title" id="" placeholder="Ваше мнение" autocomplete="off"
+                <input class="title" type="text" name="title" id="" placeholder="Добавьте свое мнение" autocomplete="off"
                     value="{{ old('title') }}" oninput="titleInputEvent()">
                 {{-- <button type="button" class="erase-input hide-effect-off" onclick="eraseInput()"></button> --}}
                 <input class="description hide-effect-off" type="text" name="description" id=""
